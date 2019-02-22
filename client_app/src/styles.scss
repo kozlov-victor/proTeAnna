@@ -1,0 +1,34 @@
+
+* {
+  font-family: Arial monospace;
+  box-sizing: border-box;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  border: none;
+}
+
+body {
+  padding: 4px;
+}
+
+.horizontal-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+router-outlet+ng-component {
+  @extend .horizontal-layout;
+  overflow-y: auto;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.layout-cell {
+  display: flex;
+}

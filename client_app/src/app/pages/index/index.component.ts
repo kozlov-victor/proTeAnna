@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {Router} from "@angular/router";
+import {TitleService} from "../../services/title.service";
 
 @Component({
   templateUrl: './index.component.html'
@@ -13,8 +15,9 @@ export class IndexComponent {
     return s;
   }
 
-  constructor() {
+  constructor(private router:Router, private titleService:TitleService) {
     const d:Date = new Date();
     this.now = `${this.leadZero(d.getDate())}:${this.leadZero(d.getMonth()+1)}:${this.leadZero(d.getFullYear())}`;
+    titleService.title = 'Головне меню';
   }
 }

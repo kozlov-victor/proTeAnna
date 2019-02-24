@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'index',
     loadChildren: './pages/index/index.module#IndexModule'
+  },
+  {
+    path: 'register',
+    loadChildren: './pages/register/register.module#RegisterModule'
   }
 ];
 

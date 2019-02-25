@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ApiResponse, IApiResponse} from "./apiResponse";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
@@ -18,9 +18,9 @@ export class BaseService {
         return `${environment.BASE_URL}${url}`
     }
 
-    async post<T>(url: string, params: IKeyVal = {}): Promise<ApiResponse<T>> {
+    async post<T>(url: string, params: IKeyVal = {},headers = null): Promise<ApiResponse<T>> {
         try {
-            let resp:IApiResponse<T> = await this.httpClient.post(this.processUrl(url), params).toPromise() as IApiResponse<T>;
+            let resp:IApiResponse<T> = await this.httpClient.post(this.processUrl(url), params, {headers}).toPromise() as IApiResponse<T>;
             let response: ApiResponse<T> = new ApiResponse();
             response.fromParams(resp);
             return response;

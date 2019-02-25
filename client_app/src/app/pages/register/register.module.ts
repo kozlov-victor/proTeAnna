@@ -1,12 +1,14 @@
-import {IndexComponent} from "./index.component";
+
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {IndexRoutingModule} from "./index-routing.module";
+import {RegisterRoutingModule} from "./register-routing.module";
+import {RegisterComponent} from "./register.component";
+
 
 const all = [
-  IndexComponent,
+  RegisterComponent,
 ];
 
 @NgModule({
@@ -18,9 +20,9 @@ const all = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    IndexRoutingModule
+    RegisterRoutingModule
   ]
 })
-export class IndexModule {
+export class RegisterModule {
 
 }

@@ -1,11 +1,20 @@
 
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" autocomplete="off">
 
-<div class="band">
-  Ваш email
-</div>
+  <div class="band">
+    <label for="email">Ваш email</label>
+  </div>
 
-<div class="band">
-  <input>
-</div>
+  <div class="band">
+    <input id="email" [formControlName]="'emailInput'">
+  </div>
+
+  <div class="band">
+    <button type="submit">Відправити</button>
+  </div>
+
+</form>
+
+
 
 

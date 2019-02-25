@@ -1,0 +1,8 @@
+{
+  "/proTeAnnaApi/api/execute.php": {
+    "target": "http://vakozlov.zzz.com.ua/proTeAnnaApi/api/execute.php",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

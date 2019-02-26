@@ -9,6 +9,26 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './pages/register/register.module#RegisterModule'
+  },
+  {
+    path: 'ration',
+    loadChildren: './pages/ration/ration.module#RationModule'
+  },
+  {
+    path: 'eat',
+    loadChildren: './pages/eat/eat.module#EatModule'
+  },
+  {
+    path: 'table',
+    loadChildren: './pages/table/table.module#TableModule'
+  },
+  {
+    path: 'hand',
+    loadChildren: './pages/hand/hand.module#HandModule'
+  },
+  {
+    path: 'history',
+    loadChildren: './pages/history/history.module#HistoryModule'
   }
 ];
 

@@ -3,8 +3,15 @@ import {ApiResponse} from "../../services/apiResponse";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
-export interface ILoginUserResponse {
-  userId:number
+
+
+export interface IConsumed {
+  id :number,
+  userId: number,
+  productId: number,
+  quantity:number,
+  proteins:number
+  date:string
 }
 
 @Injectable()
@@ -14,8 +21,14 @@ export class RationService extends BaseService{
     super(httpClient);
   }
 
-  getConsumed(userName:string):Promise<ApiResponse<ILoginUserResponse>>{
-    return this.post<ILoginUserResponse>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl({method:'loginUser',userName})}`);
+  getRecordsForDate(userId:number,day:number,month:number,year:number):Promise<ApiResponse<IConsumed[]>>{
+    return this.post<IConsumed[]>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl(
+      {
+        method:'getRecordsForDate',
+        userId,
+        day,month,year
+      })
+    }`);
   }
 
 }

@@ -15,7 +15,11 @@ export class RegisterService extends BaseService{
   }
 
   loginUser(userName:string):Promise<ApiResponse<ILoginUserResponse>>{
-    return this.post<ILoginUserResponse>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl({method:'loginUser',userName})}`);
+    return this.post<ILoginUserResponse>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl(
+      {
+        method:'loginUser',userName
+      }
+    )}`);
   }
 
 }

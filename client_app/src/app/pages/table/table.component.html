@@ -1,8 +1,37 @@
 
+<div class="vertical-layout">
+  <div class="band flex">
+    Оберіть продукт
+  </div>
 
+  <div class="band flex flex1 scrollable">
+    <ul class="list">
+      <li (click)="select(product)"  *ngFor="let product of products">
+        {{product.name}}
+      </li>
+    </ul>
+  </div>
 
-<div class="band">
-  table
+  <div *ngIf="selectedProduct" class="band flex">
+    <div>
+      <div>
+        {{selectedProduct.name}}:
+        {{selectedProduct.quantity}}
+        {{measureById[selectedProduct.measureId].name}} містить
+        {{selectedProduct.proteins}} г білку
+      </div>
+      <div>
+        <button (click)="inc()" class="btn-small">+</button>
+        <input type="number" (input)="edit()" class="input-small" [(ngModel)]="quantity">
+        <button (click)="dec()" class="btn-small">-</button>
+        <span>{{measureById[selectedProduct.measureId].name}}</span>
+        <span> ({{proteins}} г білку)</span>
+        <button>Спожити</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 

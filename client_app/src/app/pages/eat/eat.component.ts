@@ -7,7 +7,7 @@ import {TitleService} from "../../services/title.service";
 })
 export class EatComponent {
 
-  constructor(private router:Router, private titleService:TitleService) {
+  constructor(public router:Router, private titleService:TitleService) {
 
     titleService.title = 'З\'їсти продукт';
   }

@@ -1,3 +1,4 @@
+$theme-color: #08cb98;
 
 * {
   font-family: Arial monospace;
@@ -23,19 +24,27 @@ input.ng-invalid.ng-dirty  {
   background-color: rgba(255, 0, 0, 0.18);
 }
 
-.horizontal-layout {
+.vertical-layout {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 router-outlet+ng-component {
-  @extend .horizontal-layout;
+  @extend .vertical-layout;
   overflow-y: auto;
+}
+
+.flex {
+  display: flex;
 }
 
 .flex1 {
   flex: 1;
+}
+
+.scrollable {
+  overflow-y: auto;
 }
 
 .layout-cell {
@@ -47,12 +56,26 @@ router-outlet+ng-component {
   padding: 5px;
 }
 
+ul.list {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  & li {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid $theme-color;
+    background-color: lighten($theme-color,40%);
+  }
+}
+
 input, button {
   width: 100%;
   padding: 10px;
 }
 
-$theme-color: #08cb98;
+
 
 input {
   background-color: #f3f3f3;
@@ -72,4 +95,9 @@ button:active {
 .header {
   background-color: lighten($theme-color,40%);
   padding: 5px;
+}
+
+.btn-small, .input-small {
+  width: auto;
+  display: inline-block;
 }

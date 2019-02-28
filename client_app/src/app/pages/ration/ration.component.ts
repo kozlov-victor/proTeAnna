@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {TitleService} from "../../services/title.service";
+import {RationService} from "./ration.service";
 
 @Component({
   templateUrl: './ration.component.html'
@@ -8,6 +9,7 @@ import {TitleService} from "../../services/title.service";
 export class RationComponent {
 
   now:string;
+  consumed:string = '...';
 
   private leadZero(val:number){
     let s:string = val+'';
@@ -15,13 +17,15 @@ export class RationComponent {
     return s;
   }
 
-  constructor(private router:Router, private titleService:TitleService) {
+  constructor(private router:Router, private titleService:TitleService,private rationService:RationService) {
     const d:Date = new Date();
     this.now = `
-      ${this.leadZero(d.getDate())}-
-      ${this.leadZero(d.getMonth()+1)}-
-      ${this.leadZero(d.getFullYear())
-    }`;
+      ${this.leadZero(d.getDate())}-${this.leadZero(d.getMonth()+1)}-${this.leadZero(d.getFullYear())}`;
     titleService.title = 'Мій раціон';
   }
+
+  async ngOnInit(){
+    //this.consumed = this.rationService.
+  }
+
 }

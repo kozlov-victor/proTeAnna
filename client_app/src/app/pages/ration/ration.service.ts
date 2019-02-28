@@ -8,13 +8,13 @@ export interface ILoginUserResponse {
 }
 
 @Injectable()
-export class RegisterService extends BaseService{
+export class RationService extends BaseService{
 
   constructor(protected httpClient:HttpClient) {
     super(httpClient);
   }
 
-  loginUser(userName:string):Promise<ApiResponse<ILoginUserResponse>>{
+  getConsumed(userName:string):Promise<ApiResponse<ILoginUserResponse>>{
     return this.post<ILoginUserResponse>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl({method:'loginUser',userName})}`);
   }
 

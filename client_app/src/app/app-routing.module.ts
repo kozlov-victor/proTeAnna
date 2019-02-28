@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './pages/index/index.module#IndexModule'
   },
   {
+    path: 'main',
+    loadChildren: './pages/main/main.module#MainModule'
+  },
+  {
     path: 'register',
     loadChildren: './pages/register/register.module#RegisterModule'
   },

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {TitleService} from "./services/title.service";
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {TitleService} from "./services/title.service";
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [TitleService],
+  providers: [TitleService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

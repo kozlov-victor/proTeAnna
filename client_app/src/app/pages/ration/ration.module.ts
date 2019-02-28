@@ -6,6 +6,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {IndexRoutingModule} from "../index/index-routing.module";
 import {RationComponent} from "./ration.component";
 import {RationRoutingModule} from "./ration-routing.module";
+import {RationService} from "./ration.service";
 
 const all = [
   RationComponent,
@@ -13,7 +14,7 @@ const all = [
 
 @NgModule({
   declarations: all,
-  providers: [],
+  providers: [RationService],
   exports:   [...all],
   imports: [
     CommonModule,

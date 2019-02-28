@@ -1,0 +1,17 @@
+
+<div class="band" *ngIf="!userService.hasUserId()">
+  <button (click)="router.navigate(['/register'])">Рєестрація</button>
+</div>
+
+<div class="band">
+  <button (click)="router.navigate(['/ration'])" [disabled]="!userService.hasUserId()">Мій раціон</button>
+</div>
+
+<div class="band">
+  <button (click)="router.navigate(['/history'])" [disabled]="!userService.hasUserId()">Мій історія</button>
+</div>
+
+
+
+
+

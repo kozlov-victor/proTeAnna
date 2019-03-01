@@ -7,6 +7,8 @@ import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {TitleService} from "./services/title.service";
 import {UserService} from "./services/user.service";
+import {AppDataService} from "./services/app-data.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import {UserService} from "./services/user.service";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [TitleService,UserService],
+  providers: [TitleService,UserService,AppDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

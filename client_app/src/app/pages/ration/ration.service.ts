@@ -2,6 +2,7 @@ import {BaseService} from "../../services/base.service";
 import {ApiResponse} from "../../services/apiResponse";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 
 
@@ -17,7 +18,10 @@ export interface IConsumed {
 @Injectable()
 export class RationService extends BaseService{
 
-  constructor(protected httpClient:HttpClient) {
+  constructor(
+    protected httpClient:HttpClient,
+    public router:Router
+  ) {
     super(httpClient);
   }
 

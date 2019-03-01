@@ -43,6 +43,10 @@ router-outlet+ng-component {
   flex: 1;
 }
 
+.align-items-center {
+  align-items: center;
+}
+
 .scrollable {
   overflow-y: auto;
 }

@@ -31,6 +31,14 @@ const routes: Routes = [
     loadChildren: './pages/hand/hand.module#HandModule'
   },
   {
+    path: 'proportion',
+    loadChildren: './pages/proportion/proportion.module#ProportionModule'
+  },
+  {
+    path: 'simple-add',
+    loadChildren: './pages/simple-add/simple-add.module#SimpleAddModule'
+  },
+  {
     path: 'history',
     loadChildren: './pages/history/history.module#HistoryModule'
   }

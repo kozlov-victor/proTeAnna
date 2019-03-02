@@ -1,15 +1,26 @@
 
 
-<div class="band">
-  Сьогодні <span>{{now}}</span>
+<div class="vertical-layout">
+  <div class="band flex">
+    Сьогодні {{now}}
+  </div>
+  <div class="band flex">
+    Спожито білку &nbsp;<span>{{total}}</span> г
+  </div>
+  <div class="band flex flex1 scrollable">
+    <ul class="list">
+      <li *ngFor="let row of consumed">
+        {{productById[row.productId].name}}
+        {{row.quantity}}
+        {{measureById[productById[row.productId].measureId].name}}
+        ({{row.proteins}} г білку)
+      </li>
+    </ul>
+  </div>
+  <div class="band flex">
+    <button (click)="router.navigate(['/eat'])">З'їсти продукт</button>
+  </div>
 </div>
 
-<div class="band">
-  Спожито <span>{{consumed}}</span>
-</div>
-
-<div class="band">
-  <button (click)="router.navigate(['/eat'])">З'їсти продукт</button>
-</div>
 
 

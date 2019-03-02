@@ -1,12 +1,17 @@
 
-<div class="vertical-layout">
-  <div class="band flex">
-    Оберіть продукт
+<form [formGroup]="formGroup" class="vertical-layout">
+  <div class="band flex align-items-center">
+    <div class="flex padded">
+      Оберіть продукт
+    </div>
+    <div class="flex flex1">
+      <input [formControlName]="'filterTermInput'" placeholder="Пошук">
+    </div>
   </div>
 
   <div class="band flex flex1 scrollable">
     <ul class="list">
-      <li (click)="select(product)"  *ngFor="let product of products">
+      <li (click)="select(product)"  *ngFor="let product of filteredProducts">
         {{product.name}}
       </li>
     </ul>
@@ -23,19 +28,19 @@
       <div class="flex flex1">
         <div class="flex flex1 align-items-center">
           <button (click)="dec()" class="btn-small">-</button>
-          <input type="number" (input)="edit()" class="input-small" [(ngModel)]="quantity">
+          <input [formControlName]="'quantityInput'" type="number" (input)="edit()" class="input-small">
           <button (click)="inc()" class="btn-small">+</button>
-          <span >{{measureById[selectedProduct.measureId].name}}</span>
-          <span> ({{proteins}} г білку)</span>
+          <span>{{measureById[selectedProduct.measureId].name}}</span>
+          <span>&nbsp;({{proteins}} г білку)</span>
         </div>
       </div>
       <div class="flex">
-        <button class="btn-small">Спожити</button>
+        <button class="btn-small" (click)="consume()">Спожити</button>
       </div>
     </div>
 
   </div>
-</div>
+</form>
 
 
 

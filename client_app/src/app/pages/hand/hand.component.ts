@@ -9,6 +9,6 @@ export class HandComponent {
 
   constructor(private router:Router, private titleService:TitleService) {
 
-    titleService.title = 'Обрати продукт з таблиці';
+    titleService.title = 'Введення кількості білку вручну';
   }
 }

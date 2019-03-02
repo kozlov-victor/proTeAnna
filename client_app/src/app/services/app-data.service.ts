@@ -1,6 +1,6 @@
 
 import {BaseService} from "./base.service";
-import {ApiResponse} from "./apiResponse";
+import {ApiResponse, Void} from "./apiResponse";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
@@ -12,10 +12,24 @@ export interface IProduct {
   proteins:number
 }
 
+
 export interface IMeasure {
   id:number,
   name:string
 }
+
+export const NullMeasure:IMeasure = {
+  id:-1,
+  name: 'г'
+};
+
+export const NullProduct:IProduct = {
+  id:-1,
+  measureId:-1,
+  name:'Ручне введення',
+  quantity:-1,
+  proteins:-1
+};
 
 @Injectable()
 export class AppDataService extends BaseService {
@@ -53,6 +67,18 @@ export class AppDataService extends BaseService {
       return this.measures;
     }
     return Promise.reject(null);
+  }
+
+  async addRecord(userId:number,productId:number,quantity:number,proteins:number):Promise<Void>{
+    return await this.post<IMeasure[]>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl(
+      {
+        method:'addRecord',
+        userId,
+        productId,
+        quantity,
+        proteins
+      }
+    )}`);
   }
 
 

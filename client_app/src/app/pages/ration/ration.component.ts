@@ -5,6 +5,7 @@ import {IConsumed, RationService} from "./ration.service";
 import {UserService} from "../../services/user.service";
 import {ApiResponse} from "../../services/apiResponse";
 import {el} from "@angular/platform-browser/testing/src/browser_util";
+import {AppDataService, IMeasure, IProduct, NullMeasure, NullProduct} from "../../services/app-data.service";
 
 @Component({
   templateUrl: './ration.component.html'
@@ -13,6 +14,13 @@ export class RationComponent {
 
   now:string;
   consumed:IConsumed[] = [];
+  total:number = 0;
+
+  products:IProduct[] = [];
+  measures:IMeasure[] = [];
+
+  productById:{[id:number]:IProduct} = {};
+  measureById:{[id:number]:IMeasure} = {};
 
   private leadZero(val:number){
     let s:string = val+'';
@@ -21,10 +29,11 @@ export class RationComponent {
   }
 
   constructor(
-    private router:Router,
+    public router:Router,
     private titleService:TitleService,
     private rationService:RationService,
-    private userService:UserService
+    private userService:UserService,
+    private appDataService:AppDataService
   ) {
     const d:Date = new Date();
     this.now = `
@@ -33,6 +42,20 @@ export class RationComponent {
   }
 
   async ngOnInit(){
+
+    this.products = await this.appDataService.getAllProducts();
+    this.measures = await this.appDataService.getAllMeasures();
+
+    this.measures.forEach((m:IMeasure)=>{
+      this.measureById[m.id] = m;
+    });
+    this.measureById[-1] = NullMeasure;
+
+    this.products.forEach((p:IProduct)=>{
+      this.productById[p.id] = p;
+    });
+    this.productById[-1] = NullProduct;
+
     const userId = this.userService.getUserId();
     const d:Date = new Date();
     const date:number = d.getDate();
@@ -43,6 +66,8 @@ export class RationComponent {
 
     } else {
       this.consumed = res.payload;
+      this.consumed.forEach((c:IConsumed)=>this.total+=(+c.proteins));
+      this.total = parseFloat(this.total.toFixed(2));
     }
   }
 

@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HistoryComponent} from "./history.component";
 import {HistoryRoutingModule} from "./history-routing.module";
+import {RationService} from "../ration/ration.service";
 
 const all = [
   HistoryComponent,
@@ -11,7 +12,7 @@ const all = [
 
 @NgModule({
   declarations: all,
-  providers: [],
+  providers: [RationService],
   exports:   [...all],
   imports: [
     CommonModule,

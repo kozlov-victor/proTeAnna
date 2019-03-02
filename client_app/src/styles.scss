@@ -1,5 +1,9 @@
 $theme-color: #08cb98;
 
+.cbalink,.cumf_bt_form_wrapper {
+  display: none;
+}
+
 * {
   font-family: Arial monospace;
   box-sizing: border-box;
@@ -57,6 +61,10 @@ router-outlet+ng-component {
 
 .align-items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .scrollable {

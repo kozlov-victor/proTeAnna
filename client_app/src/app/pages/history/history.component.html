@@ -1,8 +1,28 @@
 
+<div class="vertical-layout">
 
+  <div class="band flex">
+    <div class="flex"><button (click)="dayDec()">Назад</button></div>
+    <div class="flex flex1 justify-center">
+      {{dateFormatted}}: спожито {{proteins}} г білку
+    </div>
+    <div class="flex"><button (click)="dayInc()">Вперед</button></div>
+  </div>
 
-<div class="band">
-  history
+  <div class="band flex flex1 scrollable">
+    <ul class="list">
+      <li *ngFor="let row of list">
+        {{productById[row.productId]?.name}}
+        <ng-container *ngIf="row.quantity!=-1">
+          {{row.quantity}}
+          {{measureById[productById[row.productId]?.measureId]?.name}}
+        </ng-container>
+        ({{row.proteins}} г білку)
+      </li>
+    </ul>
+  </div>
 </div>
+
+
 
 

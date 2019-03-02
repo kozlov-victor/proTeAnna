@@ -14,19 +14,13 @@ export class RationComponent {
 
   now:string;
   consumed:IConsumed[] = [];
-  total:number = 0;
+  total:number;
 
   products:IProduct[] = [];
   measures:IMeasure[] = [];
 
   productById:{[id:number]:IProduct} = {};
   measureById:{[id:number]:IMeasure} = {};
-
-  private leadZero(val:number){
-    let s:string = val+'';
-    if (s.length==1) return `0${s}`;
-    return s;
-  }
 
   constructor(
     public router:Router,
@@ -36,12 +30,26 @@ export class RationComponent {
     private appDataService:AppDataService
   ) {
     const d:Date = new Date();
-    this.now = `
-      ${this.leadZero(d.getDate())}-${this.leadZero(d.getMonth()+1)}-${this.leadZero(d.getFullYear())}`;
+    this.now = this.appDataService.formatDate(d);
     titleService.title = 'Мій раціон';
   }
 
   async ngOnInit(){
+
+    const userId = this.userService.getUserId();
+    const d:Date = new Date();
+    const date:number = d.getDate();
+    const year:number = d.getFullYear();
+    const month:number = d.getMonth()+1;
+    const res:ApiResponse<IConsumed[]> = await this.rationService.getRecordsForDate(userId,date,month,year);
+    if (!res.isSuccess()) {
+
+    } else {
+      this.consumed = res.payload;
+      this.total = 0;
+      this.consumed.forEach((c:IConsumed)=>this.total+=(+c.proteins));
+      this.total = parseFloat(this.total.toFixed(2));
+    }
 
     this.products = await this.appDataService.getAllProducts();
     this.measures = await this.appDataService.getAllMeasures();
@@ -55,20 +63,6 @@ export class RationComponent {
       this.productById[p.id] = p;
     });
     this.productById[-1] = NullProduct;
-
-    const userId = this.userService.getUserId();
-    const d:Date = new Date();
-    const date:number = d.getDate();
-    const year:number = d.getFullYear();
-    const month:number = d.getMonth()+1;
-    const res:ApiResponse<IConsumed[]> = await this.rationService.getRecordsForDate(userId,date,month,year);
-    if (!res.isSuccess()) {
-
-    } else {
-      this.consumed = res.payload;
-      this.consumed.forEach((c:IConsumed)=>this.total+=(+c.proteins));
-      this.total = parseFloat(this.total.toFixed(2));
-    }
   }
 
 }

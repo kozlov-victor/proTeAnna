@@ -69,7 +69,7 @@ export class TableComponent {
     if (isNaN(quantity)) quantity = 0;
     if (quantity>10000) quantity = 10000;
     quantity++;
-    this.formGroup.patchValue({quantityControl:quantity});
+    this.formGroup.patchValue({quantityInput:quantity});
     this.recalcProteins();
   }
 
@@ -77,7 +77,7 @@ export class TableComponent {
     let quantity:number = parseFloat(this.formGroup.value.quantityInput);
     if (isNaN(quantity)) quantity = 0;
     if (quantity>0) quantity--;
-    this.formGroup.patchValue({quantityControl:quantity});
+    this.formGroup.patchValue({quantityInput:quantity});
     this.recalcProteins();
   }
 

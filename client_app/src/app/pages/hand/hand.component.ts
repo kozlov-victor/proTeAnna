@@ -7,7 +7,7 @@ import {TitleService} from "../../services/title.service";
 })
 export class HandComponent {
 
-  constructor(private router:Router, private titleService:TitleService) {
+  constructor(public router:Router, private titleService:TitleService) {
 
     titleService.title = 'Введення кількості білку вручну';
   }

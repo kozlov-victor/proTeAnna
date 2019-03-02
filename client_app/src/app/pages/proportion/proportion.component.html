@@ -1,5 +1,31 @@
 
-proportion component
+<form [formGroup]="formGroup" class="panel">
+
+  <div class="vertical-layout">
+    <div class="band flex align-items-center">
+      <div class="flex cell-small">
+        <input type="number" [formControlName]="'a'" class="input-small" value="100"> г продукту містить
+      </div>
+      <div class="flex flex1 align-items-center">
+        <input type="number" [formControlName]="'b'" class="input-small" value="22"> г білку
+      </div>
+    </div>
+
+    <div class="band flex align-items-center">
+      <div class="flex cell-small align-items-center">
+        <input type="number" [formControlName]="'c'" class="input-small" value="54"> г продукту містить
+      </div>
+      <div class="flex flex1 align-items-center">
+        <div class="span-small">{{calculated}}</div>  г білку
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="band">
+  <button (click)="consume()">Спожити</button>
+</div>
+
 
 
 

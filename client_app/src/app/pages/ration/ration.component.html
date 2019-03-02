@@ -10,9 +10,11 @@
   <div class="band flex flex1 scrollable">
     <ul class="list">
       <li *ngFor="let row of consumed">
-        {{productById[row.productId].name}}
-        {{row.quantity}}
-        {{measureById[productById[row.productId].measureId].name}}
+        {{productById[row.productId]?.name}}
+        <ng-container *ngIf="row.quantity!=-1">
+          {{row.quantity}}
+          {{measureById[productById[row.productId]?.measureId]?.name}}
+        </ng-container>
         ({{row.proteins}} г білку)
       </li>
     </ul>

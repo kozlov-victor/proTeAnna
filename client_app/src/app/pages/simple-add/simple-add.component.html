@@ -1,5 +1,14 @@
 
-simple-add component
+<form [formGroup]="formGroup" class="vertical-layout">
+  <div class="band">
+    <input [formControlName]="'proteins'" type="number">
+  </div>
+  <div class="band">
+    <button (click)="consume()">Спожити</button>
+  </div>
+</form>
+
+
 
 
 

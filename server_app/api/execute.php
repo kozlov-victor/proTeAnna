@@ -34,7 +34,7 @@ switch ($method) {
         $month = requireParam("month");
         $day = requireParam("day");
         $userId = requireParam("userId");
-        renderJSON(SELECT("select * from record where DATE(date) = '$year-$month-$day' and userId=$userId"));
+        renderJSON(SELECT("SELECT id, userId, productId, quantity, proteins, TIME(date) as time, DATE(date) as date FROM record  where DATE(date) = '$year-$month-$day' and userId=$userId"));
         break;
     case "addRecord":
         $userId = requireParam("userId");

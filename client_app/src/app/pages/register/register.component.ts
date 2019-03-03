@@ -20,7 +20,7 @@ export class RegisterComponent {
     private registerService:RegisterService,
     private userService:UserService
   ) {
-    titleService.title = 'Реєстрація';
+    titleService.title = 'Рєестрація';
     const emailInput: FormControl = new FormControl(null, [
       Validators.required,
       Validators.email

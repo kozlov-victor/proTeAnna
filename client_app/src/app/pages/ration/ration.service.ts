@@ -12,7 +12,9 @@ export interface IConsumed {
   productId: number,
   quantity:number,
   proteins:number
-  date:string
+  date:string,
+  time:string,
+  altName?:string
 }
 
 @Injectable()

@@ -103,7 +103,8 @@ export class TableComponent {
       this.userService.getUserId(),
       this.selectedProduct.id,
       this.formGroup.value.quantityInput,
-      this.proteins
+      this.proteins,
+      ''
     );
     await this.router.navigate(['/ration']);
   }

@@ -10,7 +10,7 @@
   <div class="band flex flex1 scrollable">
     <ul class="list">
       <li *ngFor="let row of consumed">
-        {{productById[row.productId]?.name}}
+        {{row.time}}: {{productById[row.productId]?.name || row.altName || 'без назви'}}
         <ng-container *ngIf="row.quantity!=-1">
           {{row.quantity}}
           {{measureById[productById[row.productId]?.measureId]?.name}}

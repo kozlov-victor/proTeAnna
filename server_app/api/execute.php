@@ -34,14 +34,15 @@ switch ($method) {
         $month = requireParam("month");
         $day = requireParam("day");
         $userId = requireParam("userId");
-        renderJSON(SELECT("SELECT id, userId, productId, quantity, proteins, TIME(date) as time, DATE(date) as date FROM record  where DATE(date) = '$year-$month-$day' and userId=$userId"));
+        renderJSON(SELECT("SELECT id, userId, productId, quantity, proteins, DATE_FORMAT(date,'%H-%m') as time, DATE(date) as date, altName FROM record  where DATE(date) = '$year-$month-$day' and userId=$userId"));
         break;
     case "addRecord":
         $userId = requireParam("userId");
         $productId = requireParam("productId");
         $quantity = requireParam("quantity");
         $proteins = requireParam("proteins");
-        renderJSON(INSERT("INSERT INTO record (userId,productId,quantity,proteins) VALUES ($userId,$productId,$quantity,$proteins)"));
+        $altName = $_REQUEST['altName'];
+        renderJSON(INSERT("INSERT INTO record (userId,productId,quantity,proteins,altName) VALUES ($userId,$productId,$quantity,$proteins,\"$altName\")"));
         break;
     default:
         die(json_encode(array("error"=>true,"message"=>"no such method: $method")));

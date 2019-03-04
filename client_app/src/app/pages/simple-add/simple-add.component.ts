@@ -28,8 +28,12 @@ export class SimpleAddComponent {
       Validators.max(10000)
     ]);
 
+    const altName:FormControl = new FormControl('',[
+      Validators.required,
+    ]);
+
     this.formGroup = new FormGroup({
-      proteins
+      proteins,altName
     });
   }
 
@@ -40,7 +44,8 @@ export class SimpleAddComponent {
       this.userService.getUserId(),
       -1,
       -1,
-      +this.formGroup.value.proteins
+      +this.formGroup.value.proteins,
+      this.formGroup.value.altName
     );
     await this.router.navigate(['/ration']);
   }

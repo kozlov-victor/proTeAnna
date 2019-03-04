@@ -26,7 +26,7 @@ export const NullMeasure:IMeasure = {
 export const NullProduct:IProduct = {
   id:-1,
   measureId:-1,
-  name:'Ручне введення',
+  name:null,
   quantity:-1,
   proteins:-1
 };
@@ -69,14 +69,15 @@ export class AppDataService extends BaseService {
     return Promise.reject(null);
   }
 
-  async addRecord(userId:number,productId:number,quantity:number,proteins:number):Promise<Void>{
+  async addRecord(userId:number,productId:number,quantity:number,proteins:number,altName:string):Promise<Void>{
     return await this.post<IMeasure[]>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl(
       {
         method:'addRecord',
         userId,
         productId,
         quantity,
-        proteins
+        proteins,
+        altName
       }
     )}`);
   }

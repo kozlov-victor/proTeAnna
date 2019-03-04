@@ -36,8 +36,12 @@ export class ProportionComponent {
       Validators.max(10000)
     ]);
 
+    const altName:FormControl = new FormControl('',[
+      Validators.required,
+    ]);
+
     this.formGroup = new FormGroup({
-      a,b,c
+      a,b,c,altName
     });
   }
 
@@ -57,7 +61,8 @@ export class ProportionComponent {
       this.userService.getUserId(),
       -1,
       +this.formGroup.value.c,
-      +this.calculated
+      +this.calculated,
+      this.formGroup.value.altName
     );
     await this.router.navigate(['/ration']);
   }

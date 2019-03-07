@@ -1,0 +1,40 @@
+
+.dialog-wrapper {
+  display: table;
+  width: 100%;
+  position: fixed;
+  left:0;top:0;right:0;bottom:0;
+  height: 100%;
+  z-index:200;
+  background-color: rgba(162, 158, 158, 0.82);
+  & .dialog {
+    text-align: center;
+  }
+}
+
+.dialog {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  width: 100%;
+}
+
+.dialog-content {
+  display: inline-block;
+  position: relative;
+  background-color: #f8f8f8;
+  max-height: 90vh;
+  max-width: 95vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 300;
+  text-align: initial;
+}
+
+.dialog-close {
+  padding: 10px;
+  text-align: right;
+  background-color: #bdbdbd;
+  border-bottom: 1px solid #767676;
+  cursor: pointer;
+}

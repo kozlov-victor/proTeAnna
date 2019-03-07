@@ -1,0 +1,11 @@
+
+<app-dialog>
+
+    <div class="content">
+        {{message | i18n}}
+    </div>
+    <div>
+        <button class="button" (click)="sendResult(true)">{{'yes' | i18n}}</button>
+        <button class="button" (click)="sendResult(false)">{{'no' | i18n}}</button>
+    </div>
+</app-dialog>

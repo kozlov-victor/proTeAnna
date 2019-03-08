@@ -1,5 +1,5 @@
 import {BaseService} from "../../services/base.service";
-import {ApiResponse} from "../../services/apiResponse";
+import {ApiResponse, Void} from "../../services/apiResponse";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -33,6 +33,15 @@ export class RationService extends BaseService{
         method:'getRecordsForDate',
         userId,
         day,month,year
+      })
+    }`);
+  }
+
+  deleteRecordById(id:number){
+    return this.post<Void>(`/proTeAnnaApi/api/execute.php?${BaseService.objToUrl(
+      {
+        method:'deleteRecordById',
+        id
       })
     }`);
   }

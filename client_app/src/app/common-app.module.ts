@@ -1,20 +1,25 @@
-
-
 import {NgModule} from "@angular/core";
 import {ConsumedTableComponent} from "./components/consumed-table/consumed-table.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {ConfirmDialog} from "./components/dialog/confirm/confirm.dialog";
+import {DialogComponent} from "./components/dialog/dialog.component";
+import {DialogService} from "./services/dialog.service";
 
 @NgModule({
   declarations: [
-     ConsumedTableComponent
+    ConsumedTableComponent,
+    DialogComponent,
+    ConfirmDialog
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    ConsumedTableComponent
+    ConsumedTableComponent,
+    ConfirmDialog,
+    DialogComponent
   ],
-  providers: [ ],
+  providers: [DialogService],
 })
-export class CommonAppModule {}
+export class CommonAppModule {
+}

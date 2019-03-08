@@ -2,10 +2,10 @@
 <app-dialog>
 
     <div class="content">
-        {{message | i18n}}
+        {{message}}
     </div>
     <div>
-        <button class="button" (click)="sendResult(true)">{{'yes' | i18n}}</button>
-        <button class="button" (click)="sendResult(false)">{{'no' | i18n}}</button>
+        <button class="button" (click)="sendResult(true)">Так</button>
+        <button class="button" (click)="sendResult(false)">Ні</button>
     </div>
 </app-dialog>

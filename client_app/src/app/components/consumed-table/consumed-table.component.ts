@@ -1,6 +1,6 @@
 
 import {AppDataService, IMeasure, IProduct, NullMeasure, NullProduct} from "../../services/app-data.service";
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {IConsumed} from "../../pages/ration/ration.service";
 
 
@@ -13,6 +13,8 @@ export class ConsumedTableComponent {
 
   @Input()
   public consumed:IConsumed[] = [];
+  @Input() showDelete:boolean = false;
+  @Output() onDelete:EventEmitter<IConsumed> = new EventEmitter<IConsumed>();
 
   products:IProduct[] = [];
   measures:IMeasure[] = [];
@@ -37,6 +39,10 @@ export class ConsumedTableComponent {
       this.productById[p.id] = p;
     });
     this.productById[-1] = NullProduct;
+  }
+
+  emitDelete(row:IConsumed) {
+    this.onDelete.emit(row);
   }
 
 }

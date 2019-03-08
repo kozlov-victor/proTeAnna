@@ -8,7 +8,7 @@
     Спожито білку &nbsp;<span>{{total}}</span> г
   </div>
   <div class="band flex flex1 scrollable">
-    <app-consumed-table [consumed]="consumed"></app-consumed-table>
+    <app-consumed-table [consumed]="consumed" [showDelete]="true" (onDelete)="deleteRow($event)"></app-consumed-table>
   </div>
   <div class="band flex">
     <button (click)="router.navigate(['/eat'])">З'їсти продукт</button>

@@ -44,6 +44,10 @@ switch ($method) {
         $altName = $_REQUEST['altName'];
         renderJSON(INSERT("INSERT INTO record (userId,productId,quantity,proteins,altName) VALUES ($userId,$productId,$quantity,$proteins,\"$altName\")"));
         break;
+    case "deleteRecordById":
+        $id = requireParam("id");
+        renderJSON(INSERT("DELETE FROM record WHERE id=$id"));
+        break;
     default:
         die(json_encode(array("error"=>true,"message"=>"no such method: $method")));
 };

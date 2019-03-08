@@ -12,5 +12,8 @@
     <td>
       ({{row.proteins}} г білку)
     </td>
+    <td *ngIf="showDelete" (click)="emitDelete(row)" >
+      x
+    </td>
   </tr>
 </table>

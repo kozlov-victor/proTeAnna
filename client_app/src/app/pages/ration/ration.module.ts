@@ -6,6 +6,7 @@ import {RationComponent} from "./ration.component";
 import {RationRoutingModule} from "./ration-routing.module";
 import {RationService} from "./ration.service";
 import {CommonAppModule} from "../../common-app.module";
+import {ConfirmDialog} from "../../components/dialog/confirm/confirm.dialog";
 
 const all = [
   RationComponent
@@ -15,6 +16,7 @@ const all = [
   declarations: all,
   providers: [RationService],
   exports:   [...all],
+  entryComponents: [ConfirmDialog],
   imports: [
     CommonModule,
     CommonAppModule,

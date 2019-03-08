@@ -22,13 +22,13 @@
 .dialog-content {
   display: inline-block;
   position: relative;
-  background-color: #f8f8f8;
   max-height: 90vh;
   max-width: 95vw;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 300;
   text-align: initial;
+  background-color: rgba(255, 254, 255, 0.74);
 }
 
 .dialog-close {

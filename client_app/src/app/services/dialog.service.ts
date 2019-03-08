@@ -4,17 +4,19 @@ import {
     Injector,
     ComponentFactoryResolver,
     EmbeddedViewRef,
-    ApplicationRef, ComponentRef
+    ApplicationRef, ComponentRef, ElementRef
 } from '@angular/core';
 
 export class DialogRef {
+
+    componentInstance;
 
     constructor(private service:DialogService) {
 
     }
 
     close(){
-        this.service.destroy();
+        this.service.close();
     }
 
     getResult<T>():Promise<T>{
@@ -37,7 +39,7 @@ export class DialogService {
         private injector: Injector,
     ) { }
 
-    private appendComponentToBody(component: any) {
+    private appendComponentToRoot(component: any,rootRef:ElementRef) {
         // 1. Create a component reference from the component
         const componentRef:ComponentRef<any>  = this.componentFactoryResolver
             .resolveComponentFactory(component)
@@ -52,31 +54,33 @@ export class DialogService {
             .rootNodes[0] as HTMLElement;
 
         // 4. Append DOM element to the body
-        document.body.appendChild(domElem);
+        rootRef.nativeElement.appendChild(domElem);
 
         this.componentRef = componentRef;
         this.domElem = domElem;
     }
 
-    public destroy(){
+    public close(){
+        this.sendResult(undefined);
         if (this.componentRef) {
+            this.domElem.parentNode.removeChild(this.domElem);
             this.appRef.detachView(this.componentRef.hostView);
             this.componentRef.destroy();
-            this.domElem.parentNode.removeChild(this.domElem);
         }
-        this.appRef = null;
         this.componentRef = null;
         this.resolve = null;
         this.promise = null;
         this.domElem = null;
     }
 
-    public openDialog<T>(component:any):DialogRef {
-        this.appendComponentToBody(component);
+    public openDialog<T>(component:any,rootRef:ElementRef):DialogRef {
+        this.appendComponentToRoot(component,rootRef);
         this.promise = new Promise<T>(resolve=>{
             this.resolve = resolve;
         });
-        return new DialogRef(this);
+        const dialogRef:DialogRef = new DialogRef(this);
+        dialogRef.componentInstance = this.componentRef.instance;
+        return dialogRef;
     }
 
     public getPromise<T>():Promise<T>{

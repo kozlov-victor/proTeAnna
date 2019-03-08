@@ -28,6 +28,18 @@ input.ng-invalid.ng-dirty  {
   background-color: rgba(255, 0, 0, 0.18);
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  & tr {
+    border: 1px solid $theme-color;
+  }
+  & td {
+    padding: 5px;
+    background-color: lighten($theme-color,40%);
+  }
+}
+
 h1 {
   text-align: center;
   width: 100%;
@@ -130,4 +142,10 @@ button:active {
 
 .input-small {
   max-width: 90px;
+}
+
+
+app-consumed-table {
+  width: 100%;
+  display: block;
 }

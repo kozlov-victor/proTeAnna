@@ -4,8 +4,7 @@ import {TitleService} from "../../services/title.service";
 import {IConsumed, RationService} from "./ration.service";
 import {UserService} from "../../services/user.service";
 import {ApiResponse} from "../../services/apiResponse";
-import {el} from "@angular/platform-browser/testing/src/browser_util";
-import {AppDataService, IMeasure, IProduct, NullMeasure, NullProduct} from "../../services/app-data.service";
+import {AppDataService} from "../../services/app-data.service";
 
 @Component({
   templateUrl: './ration.component.html'
@@ -15,12 +14,6 @@ export class RationComponent {
   now:string;
   consumed:IConsumed[] = [];
   total:number;
-
-  products:IProduct[] = [];
-  measures:IMeasure[] = [];
-
-  productById:{[id:number]:IProduct} = {};
-  measureById:{[id:number]:IMeasure} = {};
 
   constructor(
     public router:Router,
@@ -51,18 +44,7 @@ export class RationComponent {
       this.total = parseFloat(this.total.toFixed(2));
     }
 
-    this.products = await this.appDataService.getAllProducts();
-    this.measures = await this.appDataService.getAllMeasures();
 
-    this.measures.forEach((m:IMeasure)=>{
-      this.measureById[m.id] = m;
-    });
-    this.measureById[-1] = NullMeasure;
-
-    this.products.forEach((p:IProduct)=>{
-      this.productById[p.id] = p;
-    });
-    this.productById[-1] = NullProduct;
   }
 
 }

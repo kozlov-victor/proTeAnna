@@ -10,16 +10,7 @@
   </div>
 
   <div class="band flex flex1 scrollable">
-    <ul class="list">
-      <li *ngFor="let row of list">
-        {{row.time}}: {{productById[row.productId]?.name || row.altName || 'без назви'}}
-        <ng-container *ngIf="row.quantity!=-1">
-          {{row.quantity}}
-          {{measureById[productById[row.productId]?.measureId]?.name}}
-        </ng-container>
-        ({{row.proteins}} г білку)
-      </li>
-    </ul>
+    <app-consumed-table [consumed]="consumed"></app-consumed-table>
   </div>
 </div>
 

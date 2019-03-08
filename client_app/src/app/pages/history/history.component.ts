@@ -12,14 +12,9 @@ import {ApiResponse} from "../../services/apiResponse";
 export class HistoryComponent {
 
   date:Date = new Date();
-  list:IConsumed[] = [];
+  consumed:IConsumed[] = [];
   proteins:number;
 
-  products:IProduct[] = [];
-  measures:IMeasure[] = [];
-
-  productById:{[id:number]:IProduct} = {};
-  measureById:{[id:number]:IMeasure} = {};
 
   constructor(
     private router:Router,
@@ -33,18 +28,6 @@ export class HistoryComponent {
   }
 
   async ngOnInit(){
-    this.products = await this.appDataService.getAllProducts();
-    this.measures = await this.appDataService.getAllMeasures();
-
-    this.measures.forEach((m:IMeasure)=>{
-      this.measureById[m.id] = m;
-    });
-    this.measureById[-1] = NullMeasure;
-
-    this.products.forEach((p:IProduct)=>{
-      this.productById[p.id] = p;
-    });
-    this.productById[-1] = NullProduct;
     await this.loadHistoryList();
   }
 
@@ -70,12 +53,12 @@ export class HistoryComponent {
     const resp:ApiResponse<IConsumed[]> = await this.rationService.getRecordsForDate(userId,date,month,year);
     if (resp.isSuccess()) {
       this.proteins = 0;
-      this.list = resp.payload;
-      this.list.forEach((r:IConsumed)=>this.proteins+=+r.proteins);
+      this.consumed = resp.payload;
+      this.consumed.forEach((r:IConsumed)=>this.proteins+=+r.proteins);
       this.proteins = parseFloat(this.proteins.toFixed(2));
     }
     else {
-      this.list = [];
+      this.consumed = [];
     }
   }
 

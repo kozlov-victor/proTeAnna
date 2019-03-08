@@ -5,9 +5,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {HistoryComponent} from "./history.component";
 import {HistoryRoutingModule} from "./history-routing.module";
 import {RationService} from "../ration/ration.service";
+import {ConsumedTableComponent} from "../../components/consumed-table/consumed-table.component";
+import {CommonAppModule} from "../../common-app.module";
 
 const all = [
-  HistoryComponent,
+  HistoryComponent
 ];
 
 @NgModule({
@@ -16,6 +18,7 @@ const all = [
   exports:   [...all],
   imports: [
     CommonModule,
+    CommonAppModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

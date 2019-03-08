@@ -1,0 +1,16 @@
+
+<table>
+  <tr *ngFor="let row of consumed">
+    <td>{{row.time}}</td>
+    <td>{{productById[row.productId]?.name || row.altName || 'без назви'}}</td>
+    <td>
+      <ng-container *ngIf="row.quantity!=-1">
+        {{row.quantity}}
+        {{measureById[productById[row.productId]?.measureId]?.name}}
+      </ng-container>
+    </td>
+    <td>
+      ({{row.proteins}} г білку)
+    </td>
+  </tr>
+</table>

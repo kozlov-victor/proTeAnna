@@ -16,7 +16,6 @@ const all = [
   declarations: all,
   providers: [RationService],
   exports:   [...all],
-  entryComponents: [ConfirmDialog],
   imports: [
     CommonModule,
     CommonAppModule,
